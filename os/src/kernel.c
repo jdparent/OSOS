@@ -1,3 +1,4 @@
+#include "system.h"
 #include "console.h"
 
 int k_main(struct multiboot *mboot_ptr)
@@ -6,12 +7,12 @@ int k_main(struct multiboot *mboot_ptr)
 
   k_printf("Hello World\n");
 
-  k_printf("1 + 2 = %d", 1+2);
+  k_printf("1 + 2 = %d\n", 1+2);
 
-  while(1)
-  {
-    ;
-  }
+  ASSERT(1 == 1);
+
+  PANIC("Halting OS");
+
   return 0xDEADBABA;
 }
 
