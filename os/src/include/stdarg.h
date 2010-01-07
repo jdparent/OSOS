@@ -1,6 +1,11 @@
 #ifndef STDARG_H
 #define STDARG_H
 
+/**
+This code comes from
+http://my.execpc.com/~geezer/code/printf.c
+*/
+
 /* home-brew STDARG.H, also public-domain: */
 
 /* Assume: width of stack == width of int. Don't use sizeof(char *) or
