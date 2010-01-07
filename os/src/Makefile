@@ -3,8 +3,7 @@ RM					= 	@rm -f
 RMDIR				=		@rm -rf
 
 EXEC_NAME		=		kernel
-#SOURCES 		:= 	kernel_start.asm \
-								kernel.c
+
 SOURCES     := $(shell ls *.asm *.c)
 
 OBJECTS 		:= 	$(SOURCES:.c=.o)
