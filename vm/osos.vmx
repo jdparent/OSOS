@@ -1,0 +1,142 @@
+#!/usr/bin/vmplayer
+.encoding = "windows-1252"
+
+# Filename: osos.vmx
+# Generated 2010-01-06;18:22:23 by EasyVMX! 2.0 (beta)
+# http://www.easyvmx.com
+
+# This is a Workstation 6 config file
+# It can be used with Player
+config.version = "8"
+virtualHW.version = "6"
+
+# Selected operating system for your virtual machine
+guestOS = "other"
+
+# displayName is your own name for the virtual machine
+displayName = "osos"
+
+# These fields are free text description fields
+guestinfo.vmware.product.url = "http://www.easyvmx.com/"
+guestinfo.vmware.product.class = "virtual machine"
+
+# Number of virtual CPUs. Your virtual machine will not
+# work if this number is higher than the number of your physical CPUs
+numvcpus = "1"
+
+# Memory size and other memory settings
+memsize = "320"
+MemAllowAutoScaleDown = "FALSE"
+MemTrimRate = "-1"
+
+# PowerOn/Off options
+gui.powerOnAtStartup = "FALSE"
+gui.fullScreenAtPowerOn = "FALSE"
+gui.exitAtPowerOff = "FALSE"
+
+# Unique ID for the virtual machine will be created
+uuid.action = "create"
+
+# Settings for VMware Tools
+tools.remindInstall = "FALSE"
+tools.upgrade.policy = "upgradeAtPowerCycle"
+
+# Startup hints interfers with automatic startup of a virtual machine
+# This setting has no effect in VMware Player
+hints.hideAll = "TRUE"
+
+# Enable time synchronization between computer
+# and virtual machine
+tools.syncTime = "TRUE"
+
+# USB settings
+# This config activates USB
+usb.present = "TRUE"
+usb.generic.autoconnect = "FALSE"
+
+# First serial port, physical COM1 is available
+serial0.present = "TRUE"
+serial0.fileName = "Auto Detect"
+serial0.autodetect = "TRUE"
+serial0.hardwareFlowControl = "TRUE"
+
+# Optional second serial port, physical COM2 is not available
+serial1.present = "FALSE"
+
+# First parallell port, physical LPT1 is available
+parallel0.present = "TRUE"
+parallel0.fileName = "Auto Detect"
+parallel0.autodetect = "TRUE"
+parallel0.bidirectional = "TRUE"
+
+# Sound settings
+sound.present = "TRUE"
+sound.fileName = "-1"
+sound.autodetect = "TRUE"
+
+# Logging
+# This config activates logging, and keeps last log
+logging = "TRUE"
+log.fileName = "osos.log"
+log.append = "TRUE"
+log.keepOld = "3"
+
+# These settings decides interaction between your
+# computer and the virtual machine
+isolation.tools.hgfs.disable = "FALSE"
+isolation.tools.dnd.disable = "FALSE"
+isolation.tools.copy.enable = "TRUE"
+isolation.tools.paste.enabled = "TRUE"
+
+# Other default settings
+svga.autodetect = "TRUE"
+mks.keyboardFilter = "allow"
+snapshot.action = "autoCommit"
+
+# First network interface card
+ethernet0.present = "TRUE"
+ethernet0.virtualDev = "vlance"
+ethernet0.connectionType = "nat"
+ethernet0.addressType = "generated"
+ethernet0.generatedAddressOffset = "0"
+
+# Settings for physical floppy drive
+floppy0.present = "TRUE"
+floppy0.startConnected = "TRUE"
+floppy0.autodetect = "TRUE"
+
+# Settings for physical CDROM drive
+ide1:0.present = "TRUE"
+ide1:0.deviceType = "cdrom-raw"
+ide1:0.startConnected = "TRUE"
+ide1:0.fileName = "auto detect"
+ide1:0.autodetect = "TRUE"
+
+# First IDE disk, size 500Mb
+ide0:0.present = "TRUE"
+ide0:0.fileName = "osos.vmdk"
+ide0:0.mode = "persistent"
+ide0:0.startConnected = "TRUE"
+ide0:0.writeThrough = "TRUE"
+
+# END OF EasyVMX! CONFIG
+
+extendedConfigFile = "osos.vmxf"
+
+floppy0.fileName = "floppy.img"
+virtualHW.productCompatibility = "hosted"
+
+floppy0.fileType = "file"
+floppy0.clientDevice = "FALSE"
+
+ethernet0.generatedAddress = "00:0c:29:ac:ff:0f"
+uuid.location = "56 4d 63 52 2e 9b df 20-79 4c 15 0b e9 ac ff 0f"
+uuid.bios = "56 4d 63 52 2e 9b df 20-79 4c 15 0b e9 ac ff 0f"
+ide0:0.redo = ""
+vmotion.checkpointFBSize = "16777216"
+ethernet0.pciSlotNumber = "16"
+sound.pciSlotNumber = "17"
+
+parallel0.startConnected = "FALSE"
+
+checkpoint.vmState = ""
