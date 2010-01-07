@@ -1,15 +1,17 @@
-ECHO				=		@echo
-RM					= 	@rm -f
-RMDIR				=		@rm -rf
+ECHO  = @echo
+RM    = @rm -f
+RMDIR = @rm -rf
+MKDIR = @mkdir -p
 
-EXEC_NAME		=		kernel
+EXEC_NAME = kernel
 
-SOURCES     := $(shell ls *.asm *.c)
+INC = include
+OBJ = obj
 
-OBJECTS 		:= 	$(SOURCES:.c=.o)
-OBJECTS 		:= 	$(OBJECTS:.asm=.o)
-
-INC					= include
+SOURCES :=  $(shell ls *.asm *.c)
+OBJECTS :=  $(SOURCES:.c=.o)
+OBJECTS :=  $(OBJECTS:.asm=.o)
+OBJECTS :=  $(OBJECTS:%=$(OBJ)/%)
 
 INCLUDES		+=	-I$(INC)
 
@@ -26,18 +28,24 @@ LD					=		ld
 LDFLAGS			+=	-T ../../utils/compiler/Link.ld
 LDOUT				=		-o $@
 
-all: $(EXEC_NAME)
+GROUPSTART = -\(
+GROUPEND = -\)
 
-$(EXEC_NAME):	$(OBJECTS)
+all: $(OBJ)/$(EXEC_NAME)
+
+$(OBJ): 
+	$(MKDIR) $(OBJ)
+
+$(OBJ)/$(EXEC_NAME): $(OBJ)	$(OBJECTS)
 	$(LD) $(LDFLAGS) $(LDOUT) $(OBJECTS)
 
-%.o: %.c
+$(OBJ)/%.o: %.c
 	$(CC) $< $(CFLAGS) $(INCLUDES) $(CCOUT)
 
-%.o: %.asm
+$(OBJ)/%.o: %.asm
 	$(ASM) $< $(ASMFLAGS) $(ASMOUT)
 
 
 .PHONY: clean
 clean:
-	$(RM) *.o $(EXEC_NAME)
+	$(RMDIR) $(OBJ)
