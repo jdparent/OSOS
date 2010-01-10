@@ -1,7 +1,5 @@
 #include "isr.h"
-#include "system.h"
 #include "console.h"
-#include "stdlib.h"
 #include "ports.h"
 
 isr_t interrupt_handlers[256];
@@ -18,6 +16,29 @@ void unregister_interrupt_handler (unsigned char n)
 
 void isr_handler (registers_t regs)
 {
-  k_printf("Received Interrupt: %d\n", regs.int_no);
+  k_printf("received interrupt: %u\n", regs.int_no);
+
+  if (interrupt_handlers[regs.int_no] != 0)
+  {
+    isr_t handler = interrupt_handlers[regs.int_no];
+
+    handler(regs);
+  }
 }
 
+void irq_handler(registers_t regs)
+{
+  if (regs.int_no >= 40)
+  {
+    outb(0xA0, 0x20);
+  }
+
+  outb(0x20, 0x20);
+
+  if (interrupt_handlers[regs.int_no] != 0)
+  {
+    isr_t handler = interrupt_handlers[regs.int_no];
+
+    handler(regs);
+  }
+}

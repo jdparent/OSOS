@@ -1,6 +1,6 @@
-#include "system.h"
 #include "console.h"
 #include "descriptor_tables.h"
+#include "timer.h"
 
 int k_main(struct multiboot *mboot_ptr)
 {
@@ -8,15 +8,14 @@ int k_main(struct multiboot *mboot_ptr)
 
   k_clrscr();
 
-  k_printf("Hello World\n");
-
-  k_printf("1 + 2 = %d\n", 1+2);
+    k_printf("Hello, world!\n");
 
   asm volatile ("int $0x3");
   asm volatile ("int $0x4");
 
-  PANIC("Halting OS");
+    asm volatile("sti");
+    init_timer(50);
 
-  return 0xDEADBABA;
+    return 0;
 }
 

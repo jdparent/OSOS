@@ -10,8 +10,6 @@ MBOOT_CHECKSUM      equ -(MBOOT_HEADER_MAGIC + MBOOT_HEADER_FLAGS)
 [extern code]
 [extern bss]
 [extern end]
-[global _start]
-[extern k_main]
 
 mboot:
   dd  MBOOT_HEADER_MAGIC 
@@ -22,12 +20,15 @@ mboot:
   dd  code
   dd  bss
   dd  end
-  dd  _start
+  dd  start
 
-_start:
+[global start]
+[extern k_main]
+
+start:
   push  ebx
   
   cli
   call  k_main
-  hlt
+  jmp   $
 
