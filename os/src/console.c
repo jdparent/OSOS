@@ -26,11 +26,20 @@ void scroll (void)
 
   if (cy >= 25)
   {
-    temp = cy - 25 + 1;
-    memcpy(vidmem, vidmem + (temp * 80 * 2), (25 - temp) * 80 * 2);
+    int i;
 
-    memsetw(vidmem + (25 - temp) * 80, blank, 80);
-    cy = 25 - 1;
+    for (i = 0; i < 24 * 80; i++)
+    {
+      vidmem[i] = vidmem[i+80];
+    }
+
+
+    for (i = 24 * 80; i < 25 * 80; i++)
+    {
+      vidmem[i] = blank;
+    }
+
+    cy = 24;
   }
 }
 
